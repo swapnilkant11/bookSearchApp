@@ -21,7 +21,7 @@ function findBook(){
                 var div = document.createElement('div');
                 div.className = 'media-body';
                 // create header for body.
-                var header = document.createElement('h5');
+                var header = document.createElement('h2');
                 header.className = 'mt-0';
                 header.innerHTML = book.items[i].volumeInfo.title;
                 // append header to the body.
@@ -29,17 +29,34 @@ function findBook(){
                 wrapperDiv.appendChild(image);
                 wrapperDiv.appendChild(div);
                 // create h5 element for author
-                var author = document.createElement('h6');
-                author.innerHTML = 'Author: ' + book.items[i].volumeInfo.authors;
+                var author = document.createElement('h5');
+                author.innerHTML = '<b>Author: </b>' + book.items[i].volumeInfo.authors;
                 div.appendChild(author);
                 // create paragraph for displaying country.
                 var country = document.createElement('p');
-                country.innerHTML = 'Country: ' + book.items[i].accessInfo.country;
+                country.innerHTML = '<b>Country: </b>' + book.items[i].accessInfo.country;
                 div.appendChild(country);
-                // create element fot description.
+                // create paragraph for pageCount.
+                var pageCount = document.createElement('p');
+                pageCount.innerHTML = '<b>Pages: </b>' + book.items[i].volumeInfo.pageCount;
+                div.appendChild(pageCount);
+                // create element for date.
+                var pubdate = document.createElement('p');
+                pubdate.innerHTML = '<b>Published: </b>' + book.items[i].volumeInfo.publishedDate;
+                div.appendChild(pubdate);
+                // create publisher name.
+                var pubname = document.createElement('p');
+                pubname.innerHTML = '<b>Publisher: </b>' + book.items[i].volumeInfo.publisher;
+                div.appendChild(pubname);
+                // create element for description.
                 var desc = document.createElement('p');
                 desc.innerHTML = book.items[i].volumeInfo.description;
                 div.appendChild(desc);
+                // create a tag to target the book link.
+                var booklink = document.createElement('a');
+                booklink.innerHTML = 'View more';
+                booklink.href = book.items[i].volumeInfo.previewLink;
+                div.appendChild(booklink);
                 // create hr to saperate every book infos.
                 var line = document.createElement('hr');
                 // make every elements as children element of bookResult.
